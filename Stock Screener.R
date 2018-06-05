@@ -348,18 +348,3 @@ daily_loop()
 #graph_ticker()
 
 ####################################
-watchlist_length <- length(watchlist)
-
-Bollinger <- rep(0, watchlist_length)
-MACD <- rep(0, watchlist_length)
-RSI <- rep(0, watchlist_length)
-DontWantThese <- rep(FALSE, watchlist_length)
-for(e in 1:watchlist_length){
-  Bollinger[e]  <-BandAlert(watchlist[[e]])
-  MACD[e] <- MACDAlert(watchlist[[e]])
-  RSI[e] <- RSIAlert(watchlist[[e]])
-  DontWantThese[e] <- is.na(Bollinger[e]) && is.na(MACD[e]) && is.na(RSI[e]) | HasBigDrop(watchlist[[e]])
-}
-all_stocks <- cbind(watchlist_names, Bollinger, MACD, RSI, Filter)
-all_stocks %>% filter(DontWantThese == FALSE) %>% select(-5) %>% arrange(Bollinger)
-watchlist[111]
