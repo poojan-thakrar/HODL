@@ -1,7 +1,5 @@
 ### Libraries ###
 library(quantmod)
-library(corrgram)
-library(corrplot)
 library(stringr)
 library(ggplot2)
 library(dplyr)
@@ -20,20 +18,11 @@ library(blotter)
 
 ### Watchlist ###
 
-date = "2018-03-10"
+date = "2018-02-01"
 
-#Index and Vix
+#Random
 getSymbols("SPY", from = date)
-getSymbols("TQQQ", from = date)
-getSymbols("UDOW", from = date)
-getSymbols("UPRO", from = date)
-getSymbols("SH", from = date)
-getSymbols("SPXU", from = date)
-getSymbols("SPXS", from = date)
-getSymbols("SQQQ", from = date)
-getSymbols("SDOW", from = date)
-getSymbols("VIXY", from = date)
-getSymbols("SVXY", from = date)
+
 
 
 
@@ -60,6 +49,8 @@ getSymbols("PGR", from = date)
 getSymbols("MET", from = date)
 getSymbols("ETFC", from = date)
 getSymbols("TRV", from = date)
+getSymbols("SF", from = date)
+getSymbols("BK", from = date)
 
 
            
@@ -94,8 +85,10 @@ getSymbols("TXN", from = date)
 getSymbols("ADBE", from = date)
 getSymbols("ORCL", from = date)
 getSymbols("HPE", from = date)
-getSymbols("CTL", from = date)
+getSymbols("CTL", from = "2017-12-01")
 getSymbols("TTWO", from = date)
+getSymbols("OLED", from = date)
+getSymbols("DISCA", from = date)
 
 
 
@@ -117,6 +110,11 @@ getSymbols("DUK", from = date)
 getSymbols("SO", from = date)
 getSymbols("D", from = date)
 getSymbols("ED", from = date)
+getSymbols("DK", from = date)
+getSymbols("APA", from = date)
+getSymbols("CXO", from = date)
+
+
 
 
 
@@ -149,6 +147,8 @@ getSymbols("FOXA", from = date)
 getSymbols("CBS", from = date)
 getSymbols("FDS", from = date)
 getSymbols("UPS", from = date)
+getSymbols("ODP", from = date)
+getSymbols("FIVE", from = date)
 
 
 
@@ -187,7 +187,7 @@ getSymbols("JBLU", from = date)
 getSymbols("AAL", from = date)
 getSymbols("ALK", from = date)
 getSymbols("UNP", from = date)
-getSymbols("SAVE", from = date)
+getSymbols("PCAR", from = date)
 
 
 
@@ -217,41 +217,43 @@ getSymbols("BA", from = date)
 getSymbols("HD", from = date)
 getSymbols("PG", from = date)
 getSymbols("UTX", from = date)
+getSymbols("BABA", from = date)
+
 
 
 watchlist <- list(AAL, AAPL, ACN, ADBE, ADS, AFL, AGN, ALGN, ALK, ALL,
-                        AMAT, AMD, AMGN, AMZN, ANF, AR, ATVI, AXP, 
-                        BA, BAC, BBY, BEP, BLK, BP,
+                        AMAT, AMD, AMGN, AMZN, ANF, APA, AR, ATVI, AXP, 
+                        BA, BABA, BAC, BBY, BEP, BK, BLK, BP,
                         C, CAT, CBS, CELG, CHK, CI, CMCSA, CMG, COF,
-                        COST, CPB, CRM, CSCO, CSIQ, CTL, CVS, CVX,
-                        D, DAL, DE, DFS, DG, DGX, DIS, DLTR, DNKN, DPZ, DUK, 
-                        EA, ED, ETFC, EXPR, F, FB, FDS, FL, FSLR, FOXA,
+                        COST, CPB, CRM, CSCO, CSIQ, CTL, CVS, CVX, CXO,
+                        D, DAL, DE, DFS, DG, DGX, DIS, DISCA, DK, DLTR, DNKN, DPZ, DUK, 
+                        EA, ED, ETFC, EXPR, F, FB, FDS, FIVE, FL, FSLR, FOXA,
                         GE, GILD, GM, GME, GOOGL, GPS, GS,
                         HD, HMC, HPE, HSY, INTL, JASO, JBLU, JCP, JMBA, JPM,
                         K, KHC, KO, KSS, LUV,
                         M, MA, MCD, MET, MNST, MMM, MRK, MS, MSFT, MU,
                         NEE, NFLX, NKE, NOK, NVDA, ODP, OLED, ORCL, 
-                        P, PEP, PFE, PG, PGR, PZZA, ROST, 
-                        S, SBUX, SCHW, SDOW, SEDG, SH, SJM, SNAP, SO,
+                        P, PCAR, PEP, PFE, PG, PGR, PZZA, ROST, 
+                        S, SBUX, SCHW, SDOW, SEDG, SF, SH, SJM, SNAP, SO,
                         SPWR, SPXS, SPXU, SPY, SQ, SQQQ, SVXY,
                         T, TGT, TM, TMUS, TQQQ, TRV, TSLA, TSN, TTWO, TWTR, TWX, TXN,
                         UAA, UAL, UDOW, UNH, UNP, UPRO, UPS, UTX, V, VIXY, VLO, VZ, WHR)
 
 
 watchlist_names <- data.frame(Ticker = c("AAL", "AAPL", "ACN", "ADBE", "ADS", "AFL", "AGN", "ALGN", "ALK", "ALL",
-                  "AMAT", "AMD", "AMGN", "AMZN", "ANF", "AR", "ATVI", "AXP", 
-                  "BA", "BAC", "BBY", "BEP", "BLK", "BP",
+                  "AMAT", "AMD", "AMGN", "AMZN", "ANF", "APA", "AR", "ATVI", "AXP", 
+                  "BA", "BABA", "BAC", "BBY", "BEP", "BK", "BLK", "BP",
                   "C", "CAT", "CBS", "CELG", "CHK", "CI", "CMCSA", "CMG", "COF",
-                  "COST", "CPB", "CRM", "CSCO", "CSIQ", "CTL", "CVS", "CVX",
-                  "D", "DAL", "DE", "DFS", "DG", "DGX", "DIS", "DLTR", "DNKN", "DPZ", "DUK", 
-                  "EA", "ED", "ETFC", "EXPR", "F", "FB", "FDS", "FL", "FSLR", "FOXA",
+                  "COST", "CPB", "CRM", "CSCO", "CSIQ", "CTL", "CVS", "CVX", "CXO",
+                  "D", "DAL", "DE", "DFS", "DG", "DGX", "DIS", "DISCA", "DK", "DLTR", "DNKN", "DPZ", "DUK", 
+                  "EA", "ED", "ETFC", "EXPR", "F", "FB", "FDS", "FIVE", "FL", "FSLR", "FOXA",
                   "GE", "GILD", "GM", "GME", "GOOGL", "GPS", "GS",
                   "HD", "HMC", "HPE", "HSY", "INTL", "JASO", "JBLU", "JCP", "JMBA", "JPM",
                   "K", "KHC", "KO", "KSS", "LUV",
                   "M", "MA", "MCD", "MET", "MMM", "MNST", "MRK", "MS", "MSFT", "MU",
                   "NEE", "NFLX", "NKE", "NOK", "NVDA", "ODP", "OLED", "ORCL", 
-                  "P", "PEP", "PFE", "PG", "PGR", "PZZA", "ROST", 
-                  "S", "SBUX", "SCHW", "SDOW", "SEDG", "SH", "SJM", "SNAP", "SO",
+                  "P", "PCAR", "PEP", "PFE", "PG", "PGR", "PZZA", "ROST", 
+                  "S", "SBUX", "SCHW", "SDOW", "SEDG", "SF", "SH", "SJM", "SNAP", "SO",
                   "SPWR", "SPXS", "SPXU", "SPY", "SQ", "SQQQ", "SVXY",
                   "T", "TGT", "TM", "TMUS", "TQQQ", "TRV", "TSLA", "TSN", "TTWO", "TWTR", "TWX", "TXN",
                   "UAA", "UAL", "UDOW", "UNH", "UNP", "UPRO", "UPS", "UTX", "V", "VIXY", "VLO", "VZ", "WHR"))
@@ -272,12 +274,20 @@ watchlist_names <- data.frame(Ticker = c("AAL", "AAPL", "ACN", "ADBE", "ADS", "A
 
 ##########Helper Functions##########
 
-graph_ticker <- function(ticker){
-  chartSeries(ticker, subset = 'last 40 days', theme = "white", TA="addVo();addMACD();addBBands(sd = 1.8);addEMA(n=15);addRSI()")
+MaxGraph <- function(ticker){
+  chartSeries(ticker, theme = "white", TA="addVo();addMACD();addBBands(sd = 1.8);addEMA(n=15);addRSI()")
+}
+MacroGraph <- function(ticker){
+  chartSeries(ticker, subset = 'last 70 days', theme = "white", TA="addVo();addMACD();addBBands(sd = 1.8);addEMA(n=15);addRSI()")
+}
+MicroGraph <- function(ticker){
+  chartSeries(ticker, subset = 'last 25 days', theme = "white", TA="addVo();addMACD();addBBands(sd = 1.8);addEMA(n=15);addRSI()")
 }
 
+
+
 BandAlert <- function(ticker){
-  shortTermOutlook <- tail(BBands(ticker[,2:4], sd = 1.8),4)[,4]
+  shortTermOutlook <- tail(BBands(ticker[,2:4], sd = 1.85),4)[,4]
   #4:1 because it'll find the latest patters first
   for(i in 3:1){
     if(shortTermOutlook[i] > 1 && shortTermOutlook[i+1] < .96){
@@ -297,11 +307,11 @@ MACDAlert <- function(ticker){
   for(i in 3:1){
     #3 days in a row of becoming less negative implies upward momentum
     #Before I had the condition of MACDTail$Histogram[i+2]< or >0, most of the signals from bbands disagreed with macd and almost every stock had a macd symbol. With that last condition, some of the disagreeing macds disappeared while others switched
-    if(MACDTail$Histogram[i]+.06<MACDTail$Histogram[i+1] && MACDTail$Histogram[i+1]+.06<MACDTail$Histogram[i+2] && MACDTail$Histogram[i+2]<0 && MACDTail$Histogram[i]< -.6){
+    if(MACDTail$Histogram[i]+.08<MACDTail$Histogram[i+1] && MACDTail$Histogram[i+1]+.08<MACDTail$Histogram[i+2] && MACDTail$Histogram[i+2]<0 && MACDTail$Histogram[i]< -.6){
       return("Bullish")
     }
     #3 days in a row of becoming less positive implies upward momentum
-    if(MACDTail$Histogram[i]>MACDTail$Histogram[i+1] +.06 && MACDTail$Histogram[i+1]>MACDTail$Histogram[i+2] +.06 && MACDTail$Histogram[i+2] >0 && MACDTail$Histogram[i]> .6){
+    if(MACDTail$Histogram[i]>MACDTail$Histogram[i+1] +.08 && MACDTail$Histogram[i+1]>MACDTail$Histogram[i+2] +.08 && MACDTail$Histogram[i+2] >0 && MACDTail$Histogram[i]> .6){
       return("Bearish")
     }
   }
@@ -322,10 +332,11 @@ RSIAlert <- function(ticker){
 }
 
 HasBigDrop <- function(ticker){
-  max(as.data.frame(tail(abs(Delt(ticker[,4])),7)))>.06
+  max(as.data.frame(tail(abs(Delt(ticker[,4])),7)))>.06 | max(as.data.frame(tail(abs((ticker[,1]-ticker[,4])/ticker[,1])),7))>.06
+  
 }
 
-daily_loop <- function(){
+DailyLoop <- function(){
   watchlist_length <- length(watchlist)
   
   Bollinger <- rep(0, watchlist_length)
@@ -339,12 +350,13 @@ daily_loop <- function(){
     DontWantThese[e] <- is.na(Bollinger[e]) && is.na(MACD[e]) && is.na(RSI[e]) | HasBigDrop(watchlist[[e]])
   }
   all_stocks <- cbind(watchlist_names, Bollinger, MACD, RSI, DontWantThese)
-  all_stocks %>% filter(DontWantThese == FALSE) %>% select(-5) %>% arrange(Bollinger)
+  all_stocks %>% filter(DontWantThese == FALSE) %>% select(-5) %>% arrange(Bollinger, MACD)
 }
 
 ###########Daily Loop###############
 
-daily_loop()
-#graph_ticker()
-
+PreJune11 <- DailyLoop()
+  
+MacroGraph(TXN)
+           
 ####################################
