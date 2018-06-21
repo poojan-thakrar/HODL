@@ -1,0 +1,403 @@
+### Libraries ###
+library(quantmod)
+library(stringr)
+library(ggplot2)
+library(dplyr)
+library(magrittr)
+library(quantstrat)
+library(TTR)
+library(devtools)
+library(IKTrading)
+library(FinancialInstrument)
+library(PerformanceAnalytics)
+library(foreach)
+library(quantstrat)
+library(blotter)
+################
+
+
+### Watchlist ###
+
+date = "2018-01-01"
+
+#Randompre
+getSymbols("SPY", from = date)
+getSymbols("MGM", from = date)
+getSymbols("HLT", from = date)
+getSymbols("MAR", from = date)
+
+
+
+#Financials
+getSymbols("WFC", from = date)
+getSymbols("BAC", from = date)
+getSymbols("JPM", from = date)
+getSymbols("MA", from = date)
+getSymbols("C", from = date)
+getSymbols("V", from = date)
+getSymbols("DFS", from = date)
+getSymbols("AXP", from = date)
+getSymbols("MS", from = date)
+getSymbols("SCHW", from = date)
+getSymbols("COF", from = date)
+getSymbols("GS", from = date)
+getSymbols("ACN", from = date)
+getSymbols("AFL", from = date)
+getSymbols("ALL", from = date)
+getSymbols("PGR", from = date)
+getSymbols("MET", from = date)
+getSymbols("ETFC", from = date)
+getSymbols("TRV", from = date)
+getSymbols("SF", from = date)
+getSymbols("BK", from = date)
+
+
+
+#Software and Tech
+getSymbols("AAPL", from = date)
+getSymbols("CRM", from = date)
+getSymbols("MSFT", from = date)
+getSymbols("INTL", from = date)
+getSymbols("CSCO", from = date)
+getSymbols("FB", from = date)
+getSymbols("SNAP", from = date)
+getSymbols("MU", from = date)
+getSymbols("AMAT", from = date)
+getSymbols("GE", from = date)
+getSymbols("ATVI", from = date)
+getSymbols("AMD", from = date)
+getSymbols("SQ", from = date)
+getSymbols("TWTR", from = date)
+getSymbols("NVDA", from = date)
+getSymbols("ADS", from = date)
+getSymbols("TXN", from = date)
+getSymbols("ADBE", from = date)
+getSymbols("ORCL", from = date)
+getSymbols("HPE", from = date)
+getSymbols("TTWO", from = date)
+getSymbols("OLED", from = date)
+getSymbols("EA", from = date)
+getSymbols("HRS", from = date)
+getSymbols("CTSH", from = date)
+
+
+
+#Energy
+getSymbols("XOM", from = date)
+getSymbols("SPWR", from = date)
+getSymbols("FSLR", from = date)
+getSymbols("CHK", from = date)
+getSymbols("JASO", from = date)
+getSymbols("SEDG", from = date)
+getSymbols("BEP", from = date)
+getSymbols("BP", from = date)
+getSymbols("CVX", from = date)
+getSymbols("CSIQ", from = date)
+getSymbols("VLO", from = date)
+getSymbols("AR", from = date)
+getSymbols("NEE", from = date)
+getSymbols("DUK", from = date)
+getSymbols("SO", from = date)
+getSymbols("D", from = date)
+getSymbols("ED", from = date)
+getSymbols("DK", from = date)
+getSymbols("APA", from = date)
+getSymbols("CXO", from = date)
+getSymbols("MPC", from = date)
+getSymbols("MRO", from = date)
+getSymbols("COG", from = date)
+getSymbols("XEC", from = date)
+getSymbols("NBL", from = date)
+getSymbols("OXY", from = date)
+
+
+
+#Consumer Stores and Services
+getSymbols("WMT", from = date)
+getSymbols("WBA", from = date)
+getSymbols("COST", from = date)
+getSymbols("KSS", from = date)
+getSymbols("FL", from = date)
+getSymbols("DG", from = date)
+getSymbols("DLTR", from = date)
+getSymbols("TGT", from = date)
+getSymbols("M", from = date)
+getSymbols("NKE", from = date)
+getSymbols("ADS", from = date)
+getSymbols("UAA", from = date)
+getSymbols("GPS", from = date)
+getSymbols("BBY", from = date)
+getSymbols("ANF", from = date)
+getSymbols("ROST", from = date)
+getSymbols("GME", from = date)
+getSymbols("EXPR", from = date)
+getSymbols("HD", from = date)
+getSymbols("JCP", from = date)
+getSymbols("WHR", from = date)
+getSymbols("TWX", from = date)
+getSymbols("FDS", from = date)
+getSymbols("UPS", from = date)
+getSymbols("ODP", from = date)
+getSymbols("FIVE", from = date)
+getSymbols("EBAY", from = date)
+getSymbols("RL", from = date)
+getSymbols("URBN", from = date)
+getSymbols("TIF", from = date)
+
+
+
+#Food and Drink
+getSymbols("MCD", from = date)
+getSymbols("YUM", from = date)
+getSymbols("K", from = date)
+getSymbols("KHC", from = date)
+getSymbols("TSN", from = date)
+getSymbols("KO", from = date)
+getSymbols("MNST", from = date)
+getSymbols("PEP", from = date)
+getSymbols("CPB", from = date)
+getSymbols("HSY", from = date)
+getSymbols("SJM", from = date)
+getSymbols("SBUX", from = date)
+getSymbols("DPZ", from = date)
+getSymbols("DNKN", from = date)
+getSymbols("JMBA", from = date)
+getSymbols("PZZA", from = date)
+getSymbols("DPS", from = date)
+getSymbols("GIS", from = date)
+getSymbols("TAP", from = date)
+getSymbols("SFM", from = date)
+
+
+
+#Transportation
+getSymbols("TSLA", from = date)
+getSymbols("F", from = date)
+getSymbols("GM", from = date)
+getSymbols("TM", from = date)
+getSymbols("HMC", from = date)
+getSymbols("LUV", from = date)
+getSymbols("DAL", from = date)
+getSymbols("UAL", from = date)
+getSymbols("JBLU", from = date)
+getSymbols("AAL", from = date)
+getSymbols("ALK", from = date)
+getSymbols("UNP", from = date)
+getSymbols("PCAR", from = date)
+getSymbols("HA", from = date)
+getSymbols("TRIP", from = date)
+getSymbols("EXPE", from = date)
+getSymbols("CSX", from = date)
+getSymbols("KSU", from = date)
+getSymbols("NSC", from = date)
+
+
+
+#Healthcare
+getSymbols("AMGN", from = date)
+getSymbols("ALGN", from = date)
+getSymbols("CI", from = date)
+getSymbols("GILD", from = date)
+getSymbols("PFE", from = date)
+getSymbols("MRK", from = date)
+getSymbols("P", from = date)
+getSymbols("CELG", from = date)
+getSymbols("UNH", from = date)
+getSymbols("P", from = date)
+getSymbols("AGN", from = date)
+getSymbols("DGX", from = date)
+getSymbols("CVS", from = date)
+getSymbols("MRK", from = date)
+getSymbols("MCK", from = date)
+
+
+
+#Media and Communications
+getSymbols("T", from = date)
+getSymbols("TMUS", from = date)
+getSymbols("VZ", from = date)
+getSymbols("S", from = date)
+getSymbols("NOK", from = date)
+getSymbols("P", from = date)
+getSymbols("DISCA", from = date)
+getSymbols("FOXA", from = date)
+getSymbols("CBS", from = date)
+getSymbols("CMCSA", from = date)
+getSymbols("DIS", from = date)
+getSymbols("MSI", from = date)
+getSymbols("CTL", from = date)
+getSymbols("DISH", from = date)
+
+
+
+#Industrials/Comglomerates
+getSymbols("CAT", from = date)
+getSymbols("DE", from = date)
+getSymbols("MMM", from = date)
+getSymbols("BA", from = date)
+getSymbols("HD", from = date)
+getSymbols("PG", from = date)
+getSymbols("UTX", from = date)
+getSymbols("BABA", from = date)
+getSymbols("LOW", from = date)
+getSymbols("HII", from = date)
+getSymbols("HON", from = date)
+getSymbols("LLL", from = date)
+getSymbols("LMT", from = date)
+getSymbols("TXT", from = date)
+
+watchlist <- list(AAL, AAPL, ACN, ADBE, ADS, AFL, AGN, ALGN, ALK, ALL,
+                        AMAT, AMD, AMGN, ANF, APA, AR, ATVI, AXP, 
+                        BA, BABA, BAC, BBY, BEP, BK, BP,
+                        C, CAT, CBS, CELG, CHK, CI, CMCSA, COF, COG,
+                        COST, CPB, CRM, CSCO, CSIQ, CSX, CTL, CTSH, CVS, CVX, CXO,
+                        D, DAL, DE, DFS, DG, DGX, DIS, DISCA, DK, DLTR, DNKN, DPS, DPZ, DUK, 
+                        EA, EBAY, ED, ETFC, EXPE, EXPR, F, FB, FDS, FIVE, FL, FSLR, FOXA,
+                        GE, GILD, GM, GME, GPS, GS,
+                        HA, HD, HII, HLT, HMC, HON, HPE, HRS, HSY, INTL, 
+                        JASO, JBLU, JCP, JMBA, JPM, K, KHC, KO, KSS, KSU, LOW, LUV,
+                        M, MA, MAR, MCD, MCK, MET, MGM,
+                        MNST, MMM, MPC, MRK, MRO, MS, MSI, MSFT, MU,
+                        NBL, NEE, NKE, NOK, NSC, NVDA, ODP, OLED, ORCL, OXY,
+                        P, PCAR, PEP, PFE, PG, PGR, PZZA, RL, ROST, 
+                        S, SBUX, SCHW, SEDG, SF, SFM, SJM, SNAP, SO, SPWR, SPY, SQ,
+                        T, TAP, TGT, TIF, TM, TMUS, TRIP, TRV,
+                        TSLA, TSN, TTWO, TWTR, TWX, TXN, TXT, 
+                        UAA, UAL, UNH, UNP, UPS, URBN, UTX, V, VLO, VZ, WHR, XEC, XOM)
+
+
+watchlist_names <- data.frame(Ticker = c("AAL", "AAPL", "ACN", "ADBE", "ADS", "AFL", "AGN", "ALGN", "ALK", "ALL",
+                  "AMAT", "AMD", "AMGN", "ANF", "APA", "AR", "ATVI", "AXP", 
+                  "BA", "BABA", "BAC", "BBY", "BEP", "BK", "BP",
+                  "C", "CAT", "CBS", "CELG", "CHK", "CI", "CMCSA", "COF", "COG",
+                  "COST", "CPB", "CRM", "CSCO", "CSIQ", "CSX", "CTL", "CTSH", "CVS", "CVX", "CXO",
+                  "D", "DAL", "DE", "DFS", "DG", "DGX", "DIS", "DISCA", "DK", "DLTR", "DNKN", "DPS", "DPZ", "DUK", 
+                  "EA", "EBAY", "ED", "ETFC", "EXPE", "EXPR", "F", "FB", "FDS", "FIVE", "FL", "FSLR", "FOXA",
+                  "GE", "GILD", "GM", "GME", "GPS", "GS",
+                  "HA", "HD", "HII", "HLT", "HMC", "HON", "HPE", "HRS", "HSY", "INTL",
+                  "JASO", "JBLU", "JCP", "JMBA", "JPM", "K", "KHC", "KO", "KSS", "KSU", "LOW", "LUV",
+                  "M", "MA", "MAR", "MCD", "MCK", "MET", "MGM",
+                  "MNST", "MMM", "MPC", "MRK", "MRO", "MS", "MSI", "MSFT", "MU",
+                  "NBL", "NEE", "NKE", "NOK", "NSC", "NVDA", "ODP", "OLED", "ORCL", "OXY",
+                  "P", "PCAR", "PEP", "PFE", "PG", "PGR", "PZZA", "RL", "ROST", 
+                  "S", "SBUX", "SCHW", "SEDG", "SF", "SFM", "SJM", "SNAP", "SO", "SPWR", "SPY", "SQ", 
+                  "T", "TAP", "TGT", "TIF", "TM", "TMUS", "TRIP", "TRV",
+                  "TSLA", "TSN", "TTWO", "TWTR", "TWX", "TXN", "TXT",
+                  "UAA", "UAL", "UNH", "UNP", "UPS", "URBN", "UTX", "V", "VLO", "VZ", "WHR", "XEC", "XOM"))
+
+
+####################################
+
+
+### Look at what quantmod can do ###
+#chartSeries(LUV, subset = 'last 2 months', theme = "white")
+#addMACD()
+#addEMA(n = 15)
+#addBBands(sd = 1.8)
+#addRSI()
+#SPY['2009']
+
+
+
+##########Helper Functions##########
+
+MaxGraph <- function(ticker){
+  chartSeries(ticker, theme = "white", TA="addVo();addMACD();addBBands(sd = 1.8);addEMA(n=15);addRSI()")
+}
+MacroGraph <- function(ticker){
+  chartSeries(ticker, subset = 'last 70 days', theme = "white", TA="addVo();addMACD();addBBands(sd = 1.8);addEMA(n=15);addRSI()")
+}
+MicroGraph <- function(ticker){
+  chartSeries(ticker, subset = 'last 25 days', theme = "white", TA="addVo();addMACD();addBBands(sd = 1.8);addEMA(n=15);addRSI()")
+}
+
+
+
+BandAlert <- function(ticker){
+  shortTermOutlook <- tail(BBands(ticker[,2:4], sd = 1.9),4)[,4]
+  #4:1 because it'll find the latest patters first
+  for(i in 3:1){
+    if(shortTermOutlook[i] > 1.1 && shortTermOutlook[i+1] < 1){
+      return("Bearish")
+    }
+    if(shortTermOutlook[i] < 0 && shortTermOutlook[i+1] > .04){
+      return("Bullish")
+    }
+  }
+  return(NA)
+}
+
+
+MACDAlert <- function(ticker){
+  MACDTail <- as.data.frame(tail(MACD(ticker[,4]),4))
+  MACDTail$Histogram <- MACDTail$macd-MACDTail$signal
+  for(i in 2:1){
+    #3 days in a row of becoming less negative implies upward momentum
+    #Before I had the condition of MACDTail$Histogram[i+2]< or >0, most of the signals from bbands disagreed with macd and almost every stock had a macd symbol. With that last condition, some of the disagreeing macds disappeared while others switched
+    if(MACDTail$Histogram[i]+.1<MACDTail$Histogram[i+1] && MACDTail$Histogram[i+1]+.1<MACDTail$Histogram[i+2] && 
+       MACDTail$Histogram[i+2]< -.1 && MACDTail$Histogram[i]< -.5 && !HasBigDrop(ticker, 11)){
+      return("Bullish")
+    }
+    #3 days in a row of becoming less positive implies downward momentum
+    if(MACDTail$Histogram[i]>MACDTail$Histogram[i+1] +.1 && MACDTail$Histogram[i+1]>MACDTail$Histogram[i+2] +.1 && 
+       MACDTail$Histogram[i+2] > .1 && MACDTail$Histogram[i]> .5 && !HasBigDrop(ticker, 11)){
+      return("Bearish")
+    }
+  }
+  return(NA)
+}
+
+RSIAlert <- function(ticker){
+  RSITail <- as.data.frame(tail(RSI(ticker[,4]),5))
+  for(i in 4:1){
+    if(RSITail[i,]>70 && RSITail[(i+1),]<70){
+      return("Bearish")
+    }
+    if(RSITail[i,]<30 && RSITail[(i+1),]>30){
+      return("Bullish")
+    }
+    return(NA)
+  }
+}
+
+HasBigDrop <- function(ticker, numDays){
+  max(as.data.frame(tail(abs(ClCl(ticker)),numDays)))>.07 | max(as.data.frame(tail(abs(OpCl(ticker))),numDays))>.07
+  #Drop between days and intraday drops
+}
+
+DailyLoop <- function(){
+  watchlist_length <- length(watchlist)
+  
+  Bollinger <- rep(0, watchlist_length)
+  MACD <- rep(0, watchlist_length)
+  RSI <- rep(0, watchlist_length)
+  DontWantThese <- rep(FALSE, watchlist_length)
+  for(e in 1:watchlist_length){
+    Bollinger[e]  <-BandAlert(watchlist[[e]])
+    MACD[e] <- MACDAlert(watchlist[[e]])
+    RSI[e] <- RSIAlert(watchlist[[e]])
+    DontWantThese[e] <- is.na(Bollinger[e]) && is.na(MACD[e]) && is.na(RSI[e]) | HasBigDrop(watchlist[[e]], 7)
+  }
+  all_stocks <- cbind(watchlist_names, Bollinger, MACD, RSI, DontWantThese)
+  all_stocks %>% filter(DontWantThese == FALSE) %>% select(-5) %>% arrange(Bollinger, MACD)
+}
+
+###########Daily Loop###############
+
+#PreJune11 <- DailyLoop()
+#PreJune12 <- DailyLoop()
+#PreJune12Round2 <- DailyLoop()
+#PreJune13 <- DailyLoop()
+#Decrease from .6 to .5 and changed HasBigDrop and changed from 0 to -.1, and from 5 days to 4, all in macd. changed .96 to .93 in band
+############ Look at PreJune12 APA and understand why its bullish and where you fucked up
+#PreJune14 <- DailyLoop()
+#PreJune15 <- DailyLoop()
+#PreJune18 <- DailyLoop()
+#PreJune19 <- DailyLoop()
+PreJune20Round2 <- DailyLoop()
+#I changed 
+
+MicroGraph(TTWO)
+MacroGraph(TTWO)
+MaxGraph(EA)
+####################################
